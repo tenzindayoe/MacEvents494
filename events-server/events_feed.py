@@ -15,3 +15,5 @@ entries = list(reader.get_entries())
 
 for e in entries:
   print(e.title)
+  print(e.summary)
+  print("\n")
