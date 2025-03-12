@@ -2,6 +2,22 @@
 <html>
   <head>
     <title>Mac Events RSS Feed Reader</title>
+    <style>
+      body {
+        font-size:medium;
+      }
+
+      table, th, td{
+        border-collapse: collapse;
+        border: 1px;
+        text-align: center;
+      }
+
+      #description {
+        max-width: 500px;
+        font-size: 15px;
+      }
+    </style>
   </head>
 
   <body>
@@ -17,12 +33,12 @@
         </tr>
         {% for event in events %}
           <tr>
-            <td>{{ event.title }}</td>
-            <td>{{ event.location }}</td>
-            <td>{{ event.date }}</td>
-            <td>{{ event.time }}</td>
-            <td>{{ event.desc }}</td>
-            <td><a href="{{ event.link }}">{{ event.link }}</a></td>
+            <td id="title">{{ event.title }}</td>
+            <td id="location">{{ event.location }}</td>
+            <td id="date">{{ event.date }}</td>
+            <td id="time">{{ event.time }}</td>
+            <td id="description">{{ event.desc }}</td>
+            <td id="link"><a href="{{ event.link }}">Link</a></td>
           </tr>
         {% endfor %}
       </table>

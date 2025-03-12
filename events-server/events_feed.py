@@ -5,17 +5,17 @@ feed_url = "https://webapps.macalester.edu/eventscalendar/events/rss/"
 
 reader = make_reader("db.sqlite")
 
-def add_and_update_feed():
+def add_feed():
   reader.add_feed(feed_url, exist_ok=True)
   reader.update_feed(feed_url)
+  reader.enable_feed_updates(feed_url)
   return reader.get_feed(feed_url)
 
-feed = add_and_update_feed()
+feed = add_feed()
 
 event_entries = []
 
-for entry in reader.get_entries():
-  event_entries.append(EventEntry(entry))
-
-for entry in event_entries:
-  print(entry.link + "\n")
+def update_feed():
+  reader.update_feeds()
+  for entry in reader.get_entries():
+    event_entries.append(EventEntry(entry))
