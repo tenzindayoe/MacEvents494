@@ -18,5 +18,4 @@ for entry in reader.get_entries():
   event_entries.append(EventEntry(entry))
 
 for entry in event_entries:
-  print(entry)
-  print(f"\n-----------\n")
+  print(entry.link + "\n")

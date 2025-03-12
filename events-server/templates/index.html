@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mac Events RSS Feed Reader</title>
+  </head>
+
+  <body>
+    <div>
+      <table>
+        <tr>
+          <th>Title</th>
+          <th>Place</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Description</th>
+          <th>More Info</th>
+        </tr>
+        {% for event in events %}
+          <tr>
+            <td>{{ event.title }}</td>
+            <td>{{ event.location }}</td>
+            <td>{{ event.date }}</td>
+            <td>{{ event.time }}</td>
+            <td>{{ event.desc }}</td>
+            <td><a href="{{ event.link }}">{{ event.link }}</a></td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>>
+  </body>
+</html>
