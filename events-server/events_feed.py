@@ -1,4 +1,5 @@
 from reader import make_reader
+from event_entry import EventEntry
 
 feed_url = "https://webapps.macalester.edu/eventscalendar/events/rss/"
 
@@ -11,9 +12,11 @@ def add_and_update_feed():
 
 feed = add_and_update_feed()
 
-entries = list(reader.get_entries())
+event_entries = []
 
-for e in entries:
-  print(e.title)
-  print(e.summary)
-  print("\n")
+for entry in reader.get_entries():
+  event_entries.append(EventEntry(entry))
+
+for entry in event_entries:
+  print(entry)
+  print(f"\n-----------\n")
