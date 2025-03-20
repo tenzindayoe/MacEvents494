@@ -7,7 +7,11 @@ class EventEntry():
     self.entry = entry
     self.title = entry.title
     self.link = entry.link
-    self.time = self.title.strip("Library hours: ").upper().replace("A", " A").replace("-", " - ").replace("P", " P") if self.title.lower().startswith("library hours") else None
+    self.time = (self.title.strip("Library hours: ")
+                 .upper().replace("A", " A")
+                 .replace("-", " - ").replace("P", " P")
+                 if self.title.lower().startswith("library hours")
+                 else None)
     self.desc = "Unavailable"
     self.parse_summary()
 
@@ -24,7 +28,13 @@ class EventEntry():
         self.location = details_split[len(details_split) - 1].strip("</strong").strip()
 
       if sub.strip().startswith("p") or sub.strip().startswith("span"):
-        self.desc = sub.strip().replace("/span","").replace("/p", "").strip(" <p").replace("nbsp;", "").strip("span")
+        self.desc = (sub
+          .strip()
+          .replace("/span","")
+          .replace("/p", "")
+          .strip(" <p")
+          .replace("nbsp;", "")
+          .strip("span"))
 
   def __str__(self):
     return f"Title: {self.title}\n\nSummary: {self.desc}\n\nLocation: {self.location}\n\nDate: {self.date}\n\nTime: {self.time}\n\nLink: {self.link}"
