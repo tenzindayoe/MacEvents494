@@ -37,4 +37,9 @@ class EventEntry():
           .strip("span"))
 
   def __str__(self):
-    return f"Title: {self.title}\n\nSummary: {self.desc}\n\nLocation: {self.location}\n\nDate: {self.date}\n\nTime: {self.time}\n\nLink: {self.link}"
+    return (f"Title: {self.title}\n\n" +
+            f"Summary: {self.desc}\n\n" +
+            f"Location: {self.location}\n\n" +
+            f"Date: {self.date}\n\n" +
+            f"Time: {self.time}\n\n" +
+            f"Link: {self.link}")

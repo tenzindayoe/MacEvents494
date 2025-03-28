@@ -7,20 +7,16 @@ feed.add_feed()
 
 @app.route("/")
 def index():
-  feed.update_feed()
-  events = feed.event_entries
+  events = feed.get_events()
   return render_template('index.html', events=events)
 
 @app.route("/events")
 def events():
-  feed.update_feed()
-  events = feed.event_entries
+  events = feed.get_events()
 
-  event_data = {}
-  i = 0
+  event_data = []
 
   for event in events:
-    i += 1
     event_dict = {
       "title" : event.title,
       "location" : event.location,
@@ -29,7 +25,7 @@ def events():
       "time" : event.time,
       "link" : event.link
     }
-    event_data[i] = event_dict
+    event_data.append(event_dict)
 
   return event_data
 
