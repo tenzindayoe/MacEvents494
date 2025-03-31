@@ -23,11 +23,12 @@ def events():
       "description" : event.desc,
       "date" : event.date,
       "time" : event.time,
-      "link" : event.link
+      "link" : event.link,
+      "coord" : 0
     }
     event_data.append(event_dict)
 
-  return event_data
+  return event_data[::-1]
 
 if (__name__ == "__main__"):
   app.run(debug=True)
