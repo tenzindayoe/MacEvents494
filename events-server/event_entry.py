@@ -13,6 +13,7 @@ class EventEntry():
                  if self.title.lower().startswith("library hours")
                  else None)
     self.desc = "Unavailable"
+    self.coord = [1, 2]
     self.parse_summary()
 
   def parse_summary(self):
