@@ -1,5 +1,4 @@
 from reader import Entry
-import lxml
 
 class EventEntry():
   def __init__(self, entry: Entry):
