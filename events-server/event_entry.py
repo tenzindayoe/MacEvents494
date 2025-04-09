@@ -1,4 +1,3 @@
-import lxml.html
 from reader import Entry
 import lxml
 
@@ -11,8 +10,8 @@ class EventEntry():
                  .upper().replace("A", " A")
                  .replace("-", " - ").replace("P", " P")
                  if self.title.lower().startswith("library hours")
-                 else None)
-    self.desc = "Unavailable"
+                 else "NA")
+    self.desc = "NA"
     self.coord = [1, 2]
     self.parse_summary()
 
