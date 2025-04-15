@@ -3,6 +3,7 @@ from reader import Entry
 class EventEntry():
   def __init__(self, entry: Entry):
     self.entry = entry
+    self.id = entry.id
     self.title = entry.title
     self.link = entry.link
     self.time = (self.title.strip("Library hours: ")
@@ -12,6 +13,7 @@ class EventEntry():
                  else "NA")
     self.desc = "NA"
     self.coord = [1, 2]
+    self.favorited = False
     self.parse_summary()
 
   def parse_summary(self):
