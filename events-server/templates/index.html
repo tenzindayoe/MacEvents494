@@ -32,6 +32,7 @@
           <th>Date</th>
           <th>Time</th>
           <th>Description</th>
+          <th>Coordinates</th>
           <th>More Info</th>
         </tr>
         {% for event in events %}
@@ -41,6 +42,14 @@
             <td id="date">{{ event.date }}</td>
             <td id="time">{{ event.time }}</td>
             <td id="description">{{ event.desc }}</td>
+            <td id="coord">
+                    {% if event.coord %}
+                        {{ event.coord[0] }}, {{ event.coord[1] }}
+                    {% else %}
+                        Not found
+                    {% endif %}
+                </td>
+
             <td id="link"><a href="{{ event.link }}">Link</a></td>
           </tr>
         {% endfor %}
