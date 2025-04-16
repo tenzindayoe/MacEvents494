@@ -18,6 +18,8 @@ def events():
 
   for event in events:
     event_dict = {
+      "id" : event.id,
+      "favorited" : event.favorited,
       "title" : event.title,
       "location" : event.location,
       "description" : event.desc,
