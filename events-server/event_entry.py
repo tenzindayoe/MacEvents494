@@ -1,5 +1,36 @@
 from reader import Entry
-import lxml
+
+location_coords = {
+  "Library": [44.93855, -93.16822],
+  "Humanities": [44.93712, -93.16928],
+  "Old Main": [44.93857, -93.16888],
+  "Carnegie Hall": [44.93874, -93.16914],
+  "Olin-Rice Science Center": [44.93676, -93.16896],
+  "Markim Hall": [44.94033, -93.16777],
+  "Kagin Commons": [44.94069, -93.16782],
+  ("Ruth Stricker Dayton Campus Center", "John B Davis Lecture Hall"): [44.93946, -93.16783],
+  ("Music Building Mairs Concert Hall", "Janet Wallace Fine Arts Center", "Law Warschaw Gallery"): [44.93749, -93.16959],
+  "Weyerhaeuser Memorial Chapel": [44.93966, -93.16867],
+  ("Leonard Center", "Shaw Field"): [44.93765, -93.16804],
+  "Theater and Dance Building": [44.93715, -93.17003]
+}
+
+
+def get_location_coords(location: str):
+  if not location:
+    return None
+  location = location.lower()
+  for key, coord in location_coords.items():
+        # if key is a tuple of aliases
+    if isinstance(key, tuple):
+      if any(name.lower() in location for name in key):
+        return coord
+        # if key is a single name
+    elif isinstance(key, str):
+      if key.lower() in location:
+        return coord
+  return None
+
 
 class EventEntry():
   def __init__(self, entry: Entry):
@@ -13,7 +44,7 @@ class EventEntry():
                  if self.title.lower().startswith("library hours")
                  else None)
     self.desc = "Unavailable"
-    self.coord = [1, 2]
+    self.coord = None
     self.parse_summary()
 
   def parse_summary(self):
