@@ -32,5 +32,10 @@ def events():
 
   return event_data[::-1]
 
+@app.route("/coord")
+def coord():
+  events = feed.get_events()
+  return render_template('coordinates.html', events=events)
+
 if (__name__ == "__main__"):
   app.run(debug=True)

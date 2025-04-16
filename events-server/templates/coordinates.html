@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mac Events Coordinates Test</title>
+    <style>
+      body {
+        font-size:medium;
+      }
+
+      table, th, td{
+        border: 2px;
+        text-align: center;
+      }
+
+      td {
+        margin-bottom: 20px;
+      }
+
+      #description {
+        max-width: 500px;
+        font-size: 15px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <table>
+        <tr>
+          <th>Title</th>
+          <th>Place</th>
+          <th>Coordinates</th>
+        </tr>
+        {% for event in events %}
+          <tr>
+            <td id="title">{{ event.title }}</td>
+            <td id="location">{{ event.location }}</td>
+            <td id="coord">
+                    {% if event.coord %}
+                        {{ event.coord[0] }}, {{ event.coord[1] }}
+                    {% else %}
+                        Not found
+                    {% endif %}
+                </td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>>
+  </body>
+</html>
