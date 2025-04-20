@@ -12,7 +12,7 @@ class EventEntry():
                  if self.title.lower().startswith("library hours")
                  else None)
     self.desc = "Unavailable"
-    self.coord = []
+    self.coord = [44.93946, -93.16783]
     self.parse_summary()
 
   location_coords = {
