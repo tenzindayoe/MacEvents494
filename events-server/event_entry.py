@@ -12,7 +12,7 @@ class EventEntry():
                  if self.title.lower().startswith("library hours")
                  else None)
     self.desc = "Unavailable"
-    self.coord = None
+    self.coord = [44.93946, -93.16783]
     self.parse_summary()
 
   location_coords = {
@@ -69,7 +69,7 @@ class EventEntry():
       elif isinstance(key, str):
         if key.lower() in location:
           return coord
-    return None
+    return [44.93946, -93.16783]
 
   def __str__(self):
     return (f"Title: {self.title}\n\n" +
