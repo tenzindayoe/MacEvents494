@@ -41,7 +41,7 @@
             <td id="title">{{ event.title }}</td>
             <td id="location">{{ event.location }}</td>
             <td id="date">{{ event.date }}</td>
-            <td id="time">{{ event.time }}</td>
+            <td id="time">{{ event.start_time }} - {{ event.end_time }}</td>
             <td id="description">{{ event.desc }}</td>
             <td id="coord">
               {% if event.coord %}

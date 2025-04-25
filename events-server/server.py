@@ -24,6 +24,8 @@ def events():
       "description" : event.desc,
       "date" : event.date,
       "time" : event.time,
+      "start time" : event.start_time,
+      "end time" : event.end_time,
       "link" : event.link,
       "coord" : event.coord
     }
