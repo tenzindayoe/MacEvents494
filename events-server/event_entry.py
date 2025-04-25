@@ -16,7 +16,7 @@ class EventEntry():
                  else None)
     self.start_time, self.end_time = self.time_start_end(self.time)
     self.desc = "Unavailable"
-    self.coord = [44.93946, -93.16783]
+    self.coord = None
     self.parse_summary()
 
   def parse_summary(self):
@@ -98,8 +98,8 @@ class EventEntry():
       elif isinstance(key, str):
         if key.lower() in location:
           return coord
-    return [44.93946, -93.16783]
-  
+    return None
+
   def __str__(self):
     return (f"Title: {self.title}\n\n" +
             f"Summary: {self.desc}\n\n" +

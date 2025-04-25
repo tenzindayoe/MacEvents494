@@ -21,7 +21,6 @@ def events():
       "id" : event.id,
       "title" : event.title,
       "location" : event.location,
-      "description" : event.desc,
       "date" : event.date,
       "time" : event.time,
       "start time" : event.start_time,
