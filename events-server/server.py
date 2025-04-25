@@ -37,5 +37,10 @@ def coord():
   events = feed.get_events()
   return render_template('coordinates.html', events=events)
 
+@app.route("/times")
+def times():
+  events = feed.get_events()
+  return render_template('startendtimes.html', events=events)
+
 if (__name__ == "__main__"):
   app.run(debug=True)

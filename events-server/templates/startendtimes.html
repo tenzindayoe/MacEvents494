@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mac Events RSS Feed Reader</title>
+    <title>Mac Events Start-End Time Test</title>
     <style>
       body {
         font-size:medium;
@@ -29,22 +29,13 @@
         <tr>
           <th>Title</th>
           <th>Place</th>
-          <th>Date</th>
           <th>Time</th>
-          <th>Description</th>
-          <th>Link</th>
-          <th>More Info</th>
         </tr>
         {% for event in events %}
           <tr>
             <td id="title">{{ event.title }}</td>
             <td id="location">{{ event.location }}</td>
-            <td id="date">{{ event.date }}</td>
             <td id="time">{{ event.start_time }} - {{ event.end_time }}</td>
-            <td id="description">{{ event.desc }}</td>
-          </td>
-            <td id="link"><a href="{{ event.link }}">Link</a></td>
-
           </tr>
         {% endfor %}
       </table>

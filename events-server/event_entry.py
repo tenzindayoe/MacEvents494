@@ -59,7 +59,7 @@ class EventEntry():
     def format_24_hour(t):
         for fmt in formats:
             try:
-                return datetime.strptime(t, fmt).strftime("%H:%M")
+                return datetime.strptime(t, fmt).strftime("%H%M")
             except ValueError:
                 continue
         return None
