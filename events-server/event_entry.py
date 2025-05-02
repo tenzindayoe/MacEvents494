@@ -55,7 +55,7 @@ class EventEntry():
         
         desc += sub
 
-    self.desc = desc
+    self.desc = "test description"
   
   def time_start_end(self, time):
     if not time:
