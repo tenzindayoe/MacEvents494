@@ -1,7 +1,6 @@
 from reader import Entry
 from datetime import datetime
-
-
+import re
 class EventEntry():
 
   def __init__(self, entry: Entry):
@@ -23,6 +22,7 @@ class EventEntry():
     summary = self.entry.summary
     sum_split = summary.split(">")
 
+    desc = ""
     for sub in sum_split:
       if sub.endswith("strong") and sum_split.index(sub) > 0:
         details_split = sub.split("|")
@@ -32,15 +32,30 @@ class EventEntry():
           self.start_time, self.end_time = self.time_start_end(self.time)
         self.location = details_split[len(details_split) - 1].strip("</strong").strip()
         self.coord = self.get_location_coords(self.location)
+      else:
+        sub = re.sub(r'/[a-z]+', "", sub)
+        sub = re.sub(r'\bp\b(?!\.)', '\n\n', sub)  
+        sub = re.sub(r'span', "", sub)
+        sub = re.sub(r' em ', "", sub)
+        sub = re.sub(r'nbsp;', "", sub)
+        sub = re.sub(r' b ', "", sub)
+        sub = re.sub(r'<[a-z]+', "", sub)
+        sub = re.sub(r'>', "", sub)
+        sub = re.sub(r'<', "", sub)
+        sub = re.sub(r' br ', "", sub)
+        sub = re.sub(r'span', "", sub)
+        
+        sub = re.sub(r'\bli\b', '•', sub)           
+        sub = re.sub(r'\bul\b', '\n', sub)          
+        sub = re.sub(r'\b/ul\b', '\n', sub)
+        sub = re.sub(r'\b/li\b', '\n', sub)
+        sub = re.sub(r'Sponsored by:\s*(.+)', r'\n\nSponsored by: \1\n\n', sub)
 
-      if sub.strip().startswith("p") or sub.strip().startswith("span"):
-        self.desc = (sub
-          .strip()
-          .replace("/span","")
-          .replace("/p", "")
-          .strip(" <p")
-          .replace("nbsp;", "")
-          .strip("span"))
+
+        
+        desc += sub
+
+    self.desc = desc
   
   def time_start_end(self, time):
     if not time:
