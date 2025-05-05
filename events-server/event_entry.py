@@ -44,8 +44,9 @@ class EventEntry():
         sub = re.sub(r'<', "", sub)
         sub = re.sub(r' br ', "", sub)
         sub = re.sub(r'span', "", sub)
+        sub = re.sub(r' i ', "", sub)
         
-        sub = re.sub(r'\bli\b', '•', sub)           
+        sub = re.sub(r'\bli\b', '•', sub)          
         sub = re.sub(r'\bul\b', '\n', sub)          
         sub = re.sub(r'\b/ul\b', '\n', sub)
         sub = re.sub(r'\b/li\b', '\n', sub)
@@ -55,7 +56,7 @@ class EventEntry():
         
         desc += sub
 
-    self.desc = "test description"
+    self.desc = desc
   
   def time_start_end(self, time):
     if not time:
