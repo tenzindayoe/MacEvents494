@@ -7,11 +7,13 @@ feed.add_feed()
 
 @app.route("/")
 def index():
+  """An HTML webpage primarily used to test that event attributes are formatted correctly."""
   events = feed.get_events()
   return render_template('index.html', events=events)
 
 @app.route("/events")
 def events():
+  """The URL path used to retrieve the event data in JSON format."""
   events = feed.get_events()
 
   event_data = []
@@ -31,7 +33,7 @@ def events():
     }
     event_data.append(event_dict)
 
-  return event_data[::-1]
+  return event_data[::-1] # To have events in (mostly) chronological order
 
 @app.route("/coord")
 def coord():

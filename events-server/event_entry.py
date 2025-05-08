@@ -1,7 +1,10 @@
 from reader import Entry
 from datetime import datetime
 import re
+
+
 class EventEntry():
+  """A class that formats the data in the reader library's Entry object for clearer use."""
 
   def __init__(self, entry: Entry):
     self.entry = entry
@@ -34,7 +37,7 @@ class EventEntry():
         self.coord = self.get_location_coords(self.location)
       else:
         sub = re.sub(r'/[a-z]+', "", sub)
-        sub = re.sub(r'\bp\b(?!\.)', '\n\n', sub)  
+        sub = re.sub(r'\bp\b(?!\.)', '\n\n', sub)
         sub = re.sub(r'span', "", sub)
         sub = re.sub(r' em ', "", sub)
         sub = re.sub(r'nbsp;', "", sub)
@@ -45,19 +48,19 @@ class EventEntry():
         sub = re.sub(r' br ', "", sub)
         sub = re.sub(r'span', "", sub)
         sub = re.sub(r' i ', "", sub)
-        
-        sub = re.sub(r'\bli\b', '•', sub)          
-        sub = re.sub(r'\bul\b', '\n', sub)          
+
+        sub = re.sub(r'\bli\b', '•', sub)
+        sub = re.sub(r'\bul\b', '\n', sub)
         sub = re.sub(r'\b/ul\b', '\n', sub)
         sub = re.sub(r'\b/li\b', '\n', sub)
         sub = re.sub(r'Sponsored by:\s*(.+)', r'\n\nSponsored by: \1\n\n', sub)
 
 
-        
+
         desc += sub
 
     self.desc = desc.strip()
-  
+
   def time_start_end(self, time):
     if not time:
         return None, None
@@ -84,7 +87,7 @@ class EventEntry():
     end_24 = format_24_hour(end_str)
 
     return start_24, end_24
-  
+
   location_coords = {
       "Library": [44.93855, -93.16822],
       "Humanities": [44.93712, -93.16928],
