@@ -56,7 +56,7 @@ class EventEntry():
         
         desc += sub
 
-    self.desc = desc
+    self.desc = desc.strip()
   
   def time_start_end(self, time):
     if not time:
