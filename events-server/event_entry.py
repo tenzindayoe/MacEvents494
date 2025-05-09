@@ -55,6 +55,12 @@ class EventEntry():
         sub = re.sub(r'\b/li\b', '\n', sub)
         sub = re.sub(r'Sponsored by:\s*(.+)', r'\n\nSponsored by: \1\n\n', sub)
 
+        sub = re.sub(r'\s*href\s*=\s*["\'][^"\']*["\']', '', sub)
+        sub = re.sub(r'\n{2,}', '\n\n', sub)  
+        sub = re.sub(r'[ \t]+', ' ', sub)     
+        sub = re.sub(r' *\n *', '\n', sub) 
+        sub = sub.strip()
+
 
 
         desc += sub
