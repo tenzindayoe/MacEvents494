@@ -67,6 +67,10 @@ class EventEntry():
 
     self.desc = desc.strip().replace("amp;", "&")
 
+  """A function that converts a time string to a 24 hour time format.
+  Args: time str
+  Returns: start time, end time or None, None tuple"""
+
   def time_start_end(self, time):
     if not time:
         return None, None
@@ -111,6 +115,11 @@ class EventEntry():
       ("Leonard Center", "Shaw Field"): [44.93765, -93.16804],
       "Theater and Dance Building": [44.93715, -93.17003]
   }
+
+  """A function thatatches location str to campus building and returns 
+  the coordinates of the building, latitude and longitude.
+    Args: location str
+    Returns: coordinates or None if no match found."""
 
   def get_location_coords(self, location: str):
     if not location:
