@@ -113,7 +113,10 @@ class EventEntry():
        "Law Warschaw Gallery"): [44.93749, -93.16959],
       "Weyerhaeuser Memorial Chapel": [44.93966, -93.16867],
       ("Leonard Center", "Shaw Field"): [44.93765, -93.16804],
-      "Theater and Dance Building": [44.93715, -93.17003]
+      "Theater and Dance Building": [44.93715, -93.17003],
+      ("Weyerhaeuser Hall", "College Admissions Office"): [44.93945, -93.16916],
+      "Great Lawn": [44.93725, -93.16855],
+      "Macalester Stadium": [44.93523, 93.16734]
   }
 
   """A function thatatches location str to campus building and returns 
