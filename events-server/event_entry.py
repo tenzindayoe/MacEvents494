@@ -9,7 +9,7 @@ class EventEntry():
   def __init__(self, entry: Entry):
     self.entry = entry
     self.id = entry.id
-    self.title = entry.title.replace("amp;", "&")
+    self.title = entry.title.replace(" amp;", "&")
     self.link = entry.link
     self.time = (self.title.strip("Library hours: ")
                  .upper().replace("A", " A")
@@ -53,7 +53,7 @@ class EventEntry():
         sub = re.sub(r'\bul\b', '\n', sub)
         sub = re.sub(r'\b/ul\b', '\n', sub)
         sub = re.sub(r'\b/li\b', '\n', sub)
-        sub = re.sub(r'Sponsored by:\s*(.+)', r'\n\nSponsored by: \1\n\n', sub)
+        sub = re.sub(r'Sponsored by:\s*(.+)', r'\n\n Sponsored by: \1\n\n', sub)
 
         sub = re.sub(r'\s*href\s*=\s*["\'][^"\']*["\']', '', sub)
         sub = re.sub(r'\n{2,}', '\n\n', sub)  
