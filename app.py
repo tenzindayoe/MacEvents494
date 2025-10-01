@@ -46,4 +46,4 @@ def times():
   return render_template('startendtimes.html', events=events)
 
 if (__name__ == "__main__"):
-  app.run(debug=True)
+  app.run()
