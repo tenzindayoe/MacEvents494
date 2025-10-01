@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/2975c2d9-bcd1-4de2-a063-fe43967e63b4/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/mac-events-494",
+    "appService.deploySubpath": "."
+}
