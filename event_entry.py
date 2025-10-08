@@ -35,6 +35,7 @@ class EventEntry():
           self.start_time, self.end_time = self.time_start_end(self.time)
         self.location = details_split[len(details_split) - 1].strip("</strong").strip()
         self.coord = self.get_location_coords(self.location)
+        self.location = re.sub("&amp;", "&")
       else:
         sub = re.sub(r'/[a-z]+', "", sub)
         sub = re.sub(r'\bp\b(?!\.)', '\n\n', sub)
@@ -56,9 +57,9 @@ class EventEntry():
         sub = re.sub(r'Sponsored by:\s*(.+)', r'\n\n Sponsored by: \1\n\n', sub)
 
         sub = re.sub(r'\s*href\s*=\s*["\'][^"\']*["\']', '', sub)
-        sub = re.sub(r'\n{2,}', '\n\n', sub)  
-        sub = re.sub(r'[ \t]+', ' ', sub)     
-        sub = re.sub(r' *\n *', '\n', sub) 
+        sub = re.sub(r'\n{2,}', '\n\n', sub)
+        sub = re.sub(r'[ \t]+', ' ', sub)
+        sub = re.sub(r' *\n *', '\n', sub)
         sub = sub.strip()
 
 
@@ -119,7 +120,7 @@ class EventEntry():
       "Macalester Stadium": [44.93523, 93.16734]
   }
 
-  """A function thatatches location str to campus building and returns 
+  """A function thatatches location str to campus building and returns
   the coordinates of the building, latitude and longitude.
     Args: location str
     Returns: coordinates or None if no match found."""
