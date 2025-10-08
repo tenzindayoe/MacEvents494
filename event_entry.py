@@ -35,7 +35,7 @@ class EventEntry():
           self.start_time, self.end_time = self.time_start_end(self.time)
         self.location = details_split[len(details_split) - 1].strip("</strong").strip()
         self.coord = self.get_location_coords(self.location)
-        self.location = re.sub("&amp;", "&")
+        self.location = self.location.replace("&amp;", "&")
       else:
         sub = re.sub(r'/[a-z]+', "", sub)
         sub = re.sub(r'\bp\b(?!\.)', '\n\n', sub)
