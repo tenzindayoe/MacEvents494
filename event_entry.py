@@ -1,4 +1,3 @@
-from reader import Entry
 from datetime import datetime
 import re
 
@@ -6,23 +5,25 @@ import re
 class EventEntry():
   """A class that formats the data in the reader library's Entry object for clearer use."""
 
-  def __init__(self, entry=None):
-    self.entry = entry
-    self.id = entry.id
-    self.title = entry.title.replace(" amp;", "&")
-    self.link = entry.link
+  def __init__(self, event_id=None, title=None, link=None, summary=None):
+    self.summary = summary if summary is not None else "Summary unavailable"
+    self.id = event_id if event_id is not None else "ID unavailable"
+    self.title = title.replace(" amp;", "&") if title is not None else "Title unavailable"
+    self.link = link if link is not None else "No available link"
     self.time = (self.title.strip("Library hours: ")
                  .upper().replace("A", " A")
                  .replace("-", " - ").replace("P", " P")
                  if self.title.lower().startswith("library hours")
                  else None)
     self.start_time, self.end_time = self.time_start_end(self.time)
-    self.desc = "Unavailable"
     self.coord = None
+    self.desc = "Unavailable"
+    self.location = "Location unavailable"
+    self.date = "Date unavailable"
     self.parse_summary()
 
   def parse_summary(self):
-    summary = self.entry.summary
+    summary = self.summary
     sum_split = summary.split(">")
 
     desc = ""

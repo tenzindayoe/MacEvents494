@@ -12,6 +12,6 @@ def add_feed():
 
 def get_events():
   event_entries = []
-  for entry in reader.get_entries(): 
-    event_entries.append(EventEntry(entry)) # Collecting all entries from Mac RSS and transforming them into our EventEntry objects
+  for entry in reader.get_entries():
+    event_entries.append(EventEntry(entry.id, entry.title, entry.link, entry.summary)) # Collecting all entries from Mac RSS and transforming them into our EventEntry objects
   return event_entries
