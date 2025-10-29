@@ -9,7 +9,7 @@ class EventEntry():
   def __init__(self, entry=None):
     self.entry = entry
     self.id = entry.id
-    self.title = entry.title.replace("&amp;", "&")
+    self.title = entry.title.replace(" amp;", "&")
     self.link = entry.link
     self.time = (self.title.strip("Library hours: ")
                  .upper().replace("A", " A")
@@ -35,6 +35,7 @@ class EventEntry():
           self.start_time, self.end_time = self.time_start_end(self.time)
         self.location = details_split[len(details_split) - 1].strip("</strong").strip()
         self.coord = self.get_location_coords(self.location)
+        self.location = self.location.replace("amp;", "")
       else:
         sub = re.sub(r'/[a-z]+', "", sub)
         sub = re.sub(r'\bp\b(?!\.)', '\n\n', sub)
