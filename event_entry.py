@@ -9,7 +9,7 @@ class EventEntry():
   def __init__(self, entry=None):
     self.entry = entry
     self.id = entry.id
-    self.title = entry.title.replace(" amp;", "&")
+    self.title = entry.title.replace("&amp;", "&")
     self.link = entry.link
     self.time = (self.title.strip("Library hours: ")
                  .upper().replace("A", " A")
