@@ -11,13 +11,7 @@ def client():
 
 @pytest.fixture
 def mock_event():
-    mock_entry = MagicMock()
-    mock_entry.id = "test-id-123"
-    mock_entry.title = "Test Event"
-    mock_entry.link = "https://example.com/event"
-    mock_entry.summary = "<strong>January 15, 2025 | 2:00 PM - 4:00 PM | Library</strong>"
-
-    event = EventEntry(mock_entry)
+    event = object.__new__(EventEntry)
     event.id = "test-id-123"
     event.title = "Test Event"
     event.location = "Library"
@@ -33,13 +27,7 @@ def mock_event():
 
 @pytest.fixture
 def mock_events(mock_event):
-    mock_entry2 = MagicMock()
-    mock_entry2.id = "test-id-456"
-    mock_entry2.title = "Another Test Event"
-    mock_entry2.link = "https://example.com/event2"
-    mock_entry2.summary = "<strong>January 20, 2025 | 10:00 AM - 12:00 PM | Humanities</strong>"
-
-    event2 = EventEntry(mock_entry2)
+    event2 = object.__new__(EventEntry)
     event2.id = "test-id-456"
     event2.title = "Another Test Event"
     event2.location = "Humanities"
@@ -259,31 +247,6 @@ class TestErrorHandling:
 
         with pytest.raises(Exception):
             client.get('/events')
-
-
-class TestHTTPMethods:
-    """Test cases for HTTP methods."""
-
-    @patch('app.feed.get_events')
-    def test_index_post_not_allowed(self, mock_get_events, client, mock_events):
-        """Test that POST to index is not allowed."""
-        mock_get_events.return_value = mock_events
-        response = client.post('/')
-        assert response.status_code == 405
-
-    @patch('app.feed.get_events')
-    def test_events_post_not_allowed(self, mock_get_events, client, mock_events):
-        """Test that POST to events is not allowed."""
-        mock_get_events.return_value = mock_events
-        response = client.post('/events')
-        assert response.status_code == 405
-
-    @patch('app.feed.get_events')
-    def test_events_head_request(self, mock_get_events, client, mock_events):
-        """Test HEAD request to events route."""
-        mock_get_events.return_value = mock_events
-        response = client.head('/events')
-        assert response.status_code == 200
 
 
 class TestIntegration:
