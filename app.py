@@ -29,7 +29,7 @@ def events():
       "endtime" : event.end_time,
       "link" : event.link,
       "coord" : event.coord,
-      "descriptionnnn" : event.desc
+      "description" : event.desc
     }
     event_data.append(event_dict)
 
