@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 import events_feed as feed
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -44,6 +45,16 @@ def coord():
 def times():
   events = feed.get_events()
   return render_template('startendtimes.html', events=events)
+
+@app.route("/health")
+def health():
+ """Health check endpoint to verify deployment and app status"""
+    return {
+    "status": "healthy",
+    "message": "MacEvents API is running",
+    "version": "2.0",
+    "timestamp": datetime.now().isoformat()
+    }
 
 if (__name__ == "__main__"):
   app.run()
