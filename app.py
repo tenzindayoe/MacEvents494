@@ -48,12 +48,12 @@ def times():
 
 @app.route("/health")
 def health():
- """Health check endpoint to verify deployment and app status"""
+    """Health check endpoint to verify deployment and app status"""
     return {
-    "status": "healthy",
-    "message": "MacEvents API is running",
-    "version": "2.0",
-    "timestamp": datetime.now().isoformat()
+        "status": "healthy",
+        "message": "MacEvents API is running",
+        "version": "2.0",
+        "timestamp": datetime.now().isoformat()
     }
 
 if (__name__ == "__main__"):
